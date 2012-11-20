@@ -13,8 +13,10 @@
         <%= link_to "Blog Admin", blog.root_path, :class => "brand" %>
         <div class="nav-collapse collapse">
           <ul class="nav">
+            <li class="<%= "active" if params[:controller] == "" %>"><%= link_to "Setting", "" %></li>
             <li class="<%= "active" if params[:controller] == "blog/admin/users" %>"><%= link_to "User", blog.admin_users_path %></li>
             <li class="<%= "active" if params[:controller] == "blog/admin/navigations" %>"><%= link_to "Navigation", blog.admin_navigations_path %></li>
+            <li class="<%= "active" if params[:controller] == "blog/admin/images" %>"><%= link_to "Image", blog.admin_images_path %></li>
           </ul>
         </div>
       </div>

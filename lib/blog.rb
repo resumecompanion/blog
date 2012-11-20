@@ -1,6 +1,8 @@
 require "devise"
 require "simple_form"
 require "compass-rails"
+require "carrierwave"
+require "kaminari"
 
 require "blog/engine"
 require "blog/generators/install_generator"

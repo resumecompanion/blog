@@ -9,6 +9,9 @@ Blog::Engine.routes.draw do
   namespace :admin do
     resources :users
     resources :navigations
+    resources :images
+
+    root :to => 'users#index'
   end
 
   resources :posts, :only => [:index, :show]
