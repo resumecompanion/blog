@@ -14,6 +14,8 @@ module Blog
       def copy_migration
         copy_file "migrations/devise_create_blog_users.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_devise_create_blog_users.rb"
         sleep 0.1
+        copy_file "migrations/create_blog_navigations.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_blog_navigations.rb"
+        sleep 0.1
       end
 
       # def show_readme

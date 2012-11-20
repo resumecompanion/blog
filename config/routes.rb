@@ -8,6 +8,7 @@ Blog::Engine.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :navigations
   end
 
   resources :posts, :only => [:index, :show]
