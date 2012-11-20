@@ -6,6 +6,10 @@ Blog::Engine.routes.draw do
              :skip => [:passwords],
              :path_names => { :sign_out => 'logout', :sign_in => 'login' }
 
+  namespace :admin do
+    resources :users
+  end
+
   resources :posts, :only => [:index, :show]
 
   root :to => 'posts#index'
