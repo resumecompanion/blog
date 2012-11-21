@@ -12,6 +12,7 @@ Blog::Engine.routes.draw do
     resources :images
     resources :posts, :except => [:show]
     resources :ckeditor, :only => [:index, :create]
+    resources :sidebars
 
     root :to => 'users#index'
   end

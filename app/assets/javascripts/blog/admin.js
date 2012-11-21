@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require ./plugin/bootstrap.min
 //= require ./admin/posts
+//= require ./admin/sidebars
