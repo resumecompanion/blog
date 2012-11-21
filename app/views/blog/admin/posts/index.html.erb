@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Post List</h1>
+      </div>
+    </section>
+
+    <section>
+      <%= link_to "Create New Page", blog.new_admin_post_path, :class => "btn btn-primary pull-right", :style => "margin-bottom:30px" %>
+
+      <table class="table table-striped">
+        <tr>
+          <th>title</th>
+          <th>published at</th>
+          <th>created at</th>
+          <th>actions</th>
+        </tr>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td></td>
+            <td></td>
+            <td>
+              <%= link_to "Preview", blog.admin_post_path(post), :class => "btn btn-mini" %>
+              <%= link_to "Edit", blog.edit_admin_post_path(post), :class => "btn btn-mini" %>
+              <%= link_to "Delete", blog.admin_post_path(post), :class => "btn btn-mini btn-danger", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </section>
+  </div>
+</div>
+
+
+

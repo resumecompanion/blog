@@ -1,6 +1,6 @@
 module Blog
   module Admin
-    class NavigationsController < ApplicationController
+    class NavigationsController < ::Blog::ApplicationController
       layout "blog/admin"
 
       before_filter :require_admin

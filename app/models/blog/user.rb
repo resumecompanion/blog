@@ -8,5 +8,7 @@ module Blog
     # Setup accessible (or protected) attributes for your model
     attr_accessible :nickname, :is_admin, :email, :password, :password_confirmation, :remember_me
     # attr_accessible :title, :body
+
+    has_many :posts, :class_name => "Cms::Post", :foreign_key => :author_id
   end
 end

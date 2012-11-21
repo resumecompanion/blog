@@ -1,6 +1,6 @@
 module Blog
   module Admin
-    class ImagesController < ApplicationController
+    class ImagesController < ::Blog::ApplicationController
       layout "blog/admin"
       before_filter :require_admin
       before_filter :find_file, :only => [:show, :edit, :update, :destroy]

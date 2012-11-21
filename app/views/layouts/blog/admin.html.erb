@@ -3,7 +3,7 @@
 <head>
   <title>Admin</title>
   <%= stylesheet_link_tag    "blog/admin", :media => "all" %>
-  <%= javascript_include_tag "blog/admin" %>
+  <%= javascript_include_tag "blog/admin", "blog/plugin/ckeditor/init" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -17,6 +17,7 @@
             <li class="<%= "active" if params[:controller] == "blog/admin/users" %>"><%= link_to "User", blog.admin_users_path %></li>
             <li class="<%= "active" if params[:controller] == "blog/admin/navigations" %>"><%= link_to "Navigation", blog.admin_navigations_path %></li>
             <li class="<%= "active" if params[:controller] == "blog/admin/images" %>"><%= link_to "Image", blog.admin_images_path %></li>
+            <li class="<%= "active" if params[:controller] == "blog/admin/posts" %>"><%= link_to "Post", blog.admin_posts_path %></li>
           </ul>
         </div>
       </div>
