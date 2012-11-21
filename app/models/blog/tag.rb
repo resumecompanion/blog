@@ -3,6 +3,8 @@ module Blog
     attr_accessible :name, :slug, :meta_description, :meta_keywords, :generate_slug
     attr_accessor :generate_slug
 
+    paginates_per 20
+
     has_many :post_tag_relations
     has_many :posts, :through => :post_tag_relations
 

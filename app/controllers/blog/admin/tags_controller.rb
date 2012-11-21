@@ -7,7 +7,7 @@ module Blog
       before_filter :find_tag, :only => [:edit, :update]
 
       def index
-        @tags = Blog::Tag.all
+        @tags = Blog::Tag.page(params[:page])
       end
 
       def edit

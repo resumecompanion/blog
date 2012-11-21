@@ -8,6 +8,6 @@
 
 <%= f.input :meta_description, :input_html => { :class => "span12" } %>
 <%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
-<%= f.input :post_tags, :hint => "( ex: \"Resume Template, Resume Example, Resume\", seperate tags by \",\" )", :input_html => { :class => "span12", :value => f.object.tags.map { |tag| tag.name }.join(", ") } %>
+<%= f.input :post_tags, :label => "Tags", :hint => "( ex: \"Resume Template, Resume Example, Resume\", seperate tags by \",\" )", :input_html => { :class => "span12", :value => f.object.tags.map { |tag| tag.name }.join(", ") } %>
 <%= f.input :is_published, :label => "Published?", :as => :select, :include_blank => false %>
 <%= f.input :published_at, :label => "Published at", :include_blank => false %>
