@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Edit Tag - <%= @tag.name %></h1>
+      </div>
+    </section>
+
+    <%= simple_form_for @tag, :url => blog.admin_tag_path(@tag), :method => "put" do |f| %>
+      <%= f.input :name, :input_html => { :class => "span12", :disabled => true } %>
+      <%= f.input :slug, :hint => " (It'll be generated automatically.)", :input_html => { :class => "span12", :disabled => true } %>
+      <%= f.input :meta_description, :input_html => { :class => "span12" } %>
+      <%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
+
+      <div class="form-actions">
+        <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+        <%= link_to "Cancel", blog.admin_tags_path, :class => "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

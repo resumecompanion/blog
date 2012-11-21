@@ -2,13 +2,19 @@ module Blog
   class Post < ActiveRecord::Base
     attr_accessible :author_id, :sidebar_id, :title, :slug, :meta_description,
                     :meta_keywords, :content, :excerpt, :is_published, :published_at,
-                    :old_id, :generate_slug
-    attr_accessor :generate_slug
+                    :old_id, :generate_slug, :post_tags
+    attr_accessor :generate_slug, :post_tags
 
     belongs_to :author, :class_name => "Blog::User", :foreign_key => :author_id
     belongs_to :sidebar, :class_name => "Blog::Sidebar", :foreign_key => :sidebar_id
 
+    has_many :post_tag_relations
+    has_many :tags, :through => :post_tag_relations
+
     before_create :handle_slug
+    before_save :handle_tags
+
+    validates_presence_of :author_id, :title
 
     protected
 
@@ -23,6 +29,19 @@ module Blog
           return false
         end
       end
+    end
+
+    def handle_tags
+      temp_tag_ids = []
+      if self.post_tags.present?
+        temp_tag_names = self.post_tags.split(",")
+        temp_tag_names.each do |name|
+          tag = Blog::Tag.find_or_create_by_name(:name => name.strip)
+          temp_tag_ids << tag.id
+        end
+      end
+
+      self.tag_ids = temp_tag_ids
     end
   end
 end

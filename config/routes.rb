@@ -13,6 +13,7 @@ Blog::Engine.routes.draw do
     resources :posts, :except => [:show]
     resources :ckeditor, :only => [:index, :create]
     resources :sidebars
+    resources :tags, :only => [:index, :edit, :update]
 
     root :to => 'users#index'
   end
