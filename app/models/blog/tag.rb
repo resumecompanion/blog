@@ -1,6 +1,6 @@
 module Blog
   class Tag < ActiveRecord::Base
-    attr_accessible :name, :slug, :meta_description, :meta_keywords, :generate_slug
+    attr_accessible :name, :slug, :meta_description, :meta_keywords, :generate_slug, :is_enabled
     attr_accessor :generate_slug
 
     paginates_per 20

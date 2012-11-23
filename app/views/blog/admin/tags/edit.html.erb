@@ -9,6 +9,7 @@
     <%= simple_form_for @tag, :url => blog.admin_tag_path(@tag), :method => "put" do |f| %>
       <%= f.input :name, :input_html => { :class => "span12", :disabled => true } %>
       <%= f.input :slug, :hint => " (It'll be generated automatically.)", :input_html => { :class => "span12", :disabled => true } %>
+      <%= f.input :is_enabled, :label => "Enabled?", :as => :select, :include_blank => false %>
       <%= f.input :meta_description, :input_html => { :class => "span12" } %>
       <%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
 

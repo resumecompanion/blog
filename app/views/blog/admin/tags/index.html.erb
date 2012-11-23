@@ -11,12 +11,14 @@
         <tr>
           <th>name</th>
           <th>slug</th>
+          <th>enable?</th>
           <th>action</th>
         </tr>
         <% @tags.each do |tag| %>
           <tr>
             <td><%= tag.name %></td>
             <td><%= tag.slug %></td>
+            <td><%= tag.is_enabled? ? "Yes" : "No" %></td>
             <td>
               <%= link_to "Edit", blog.edit_admin_tag_path(tag), :class => "btn btn-mini" %>
             </td>
