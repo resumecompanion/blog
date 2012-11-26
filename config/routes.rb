@@ -7,6 +7,7 @@ Blog::Engine.routes.draw do
              :path_names => { :sign_out => 'logout', :sign_in => 'login' }
 
   namespace :admin do
+    resources :settings
     resources :users
     resources :navigations
     resources :images
@@ -20,6 +21,8 @@ Blog::Engine.routes.draw do
 
   resources :posts, :only => [:index, :show]
   resources :tags, :only => [:show]
+
+  match "/404" => "posts#render_404"
 
   root :to => 'posts#index'
 end

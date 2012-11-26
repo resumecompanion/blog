@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    "blog/application", :media => "all" %>
+  <%= javascript_include_tag "blog/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if blog_user_signed_in? && current_blog_user.is_admin? %>
+  <div id="admin-bar">
+    <%= link_to "Manage Your CMS", blog.admin_users_path, :class => "admin-button" %>
+    <%= link_to "Logout", blog.destroy_blog_user_session_path, :class => "logout-button" %>
+  </div>
+  <% end %>
+  <div id="header">
+    <div class="content">
+      <%= link_to "Logo", blog.root_path, :class => "logo" %>
+      <p id="website-description">
+        #1 Resource for Resume Tips<br>
+        Resume Examples, Resume Templates and More
+      </p>
+    </div>
+  </div>
+
+  <div id="navigation">
+    <ul>
+      <% Blog::Navigation.where(:is_hidden => false).each do |navigation| %>
+        <li><%= link_to navigation.name, navigation.link %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="container">
+
+    <%= yield %>
+
+    <div id="footer">
+      <p>Copyright © 2009-2012 Resume Companion LLC. All Rights reserved.</p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -128,4 +128,70 @@ namespace :blog do
 
     puts "Import tags and relation"
   end
+
+  desc "create default data"
+  task :seed => :environment do
+
+    user = Blog::User.new(:nickname => "admin", :email => "admin@resumecompanion.com", :password => "123456", :password_confirmation => "123456")
+    user.is_admin = true
+    user.save
+
+    puts "Create admin"
+
+    navigation = Blog::Navigation.create(:name => "Home", :link => "/blog", :link_title => "Home", :is_hidden => false, :position => 1)
+
+    puts "create navigations"
+
+    setting = Blog::Setting.create(:key => "global:website_title", :value => "ResumeCompanion Blog", :description => "This will be your website name")
+    setting = Blog::Setting.create(:key => "global:meta_title", :value => "ResumeCompanion Blog", :description => "This is default title if we can't find tilte")
+    setting = Blog::Setting.create(:key => "global:meta_description", :value => "ResumeCompanion Blog", :description => "This is default meta description if we can't find meta description")
+    setting = Blog::Setting.create(:key => "global:meta_keywords", :value => "ResumeCompanion Blog", :description => "This is default meta description if we can't find meta description")
+    setting = Blog::Setting.create(:key => "global:posts:sidebar_id", :value => 1, :description => "This will be your posts' sidebar id")
+    setting = Blog::Setting.create(:key => "global:tags:sidebar_id", :value => 1, :description => "This will be your tags' sidebar id")
+    setting = Blog::Setting.create(:key => "global:disqus:shortname", :value => "resumebuilder1", :description => "This is for disqus")
+
+    puts "create settings"
+
+    sidebar = Blog::Sidebar.new
+    sidebar.name = "default sidebar"
+    sidebar.content = '
+    <section>
+      <p>
+        <img alt="" src="/uploads/blog/file/image/112/large_banner1-3dd65ef96b799bd188edf6a3baf428f4.png" style="width: 300px; height: 156px;" /></p>
+    </section>
+    <section>
+      <h3 class="facebook-fan-page">
+        Join Us on Facebook</h3>
+      <p>
+        <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fresumecompanion&amp;width=300&amp;height=285&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23f0f5fb&amp;stream=false&amp;header=false" style="border:none; overflow:hidden; width:300px; height:285px;"></iframe></p>
+    </section>
+
+    <section class="fan-pages">
+      <h3>Follow Us!</h3>
+      <ul>
+        <li><a href="http://www.facebook.com/resumecompanion" class="facebook" target="_blank" title="Facebook">Facebook</a></li>
+        <li><a href="http://www.twitter.com/resumecompanion" class="twitter" target="_blank" title="Twitter">Twitter</a></li>
+        <li><a href="https://plus.google.com/111264232375433512185" class="google-plus" target="_blank" title="Google Plus">Google Plus</a></li>
+        <li><a href="http://resumecompanion.blogspot.com/" class="blogger" target="_blank" title="Blogger">Blogger</a></li>
+        <li><a href="http://pinterest.com/resumecompanion/" class="pinterest" target="_blank" title="Pinterest">Pinterest</a></li>
+        <li><a href=" https://www.youtube.com/resumecompanionvideo" class="youtube" target="_blank" title="Youtube">Youtube</a></li>
+        <li><a href="/blog/post.rss" class="rss" target="_blank" title="RSS">RSS</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Resume For Beginners!</h3>
+      <ul>
+        <li><a href="http://resumecompanion.com" title="Resume 101">Resume 101</a></li>
+        <li><a href="http://resumecompanion.com" title="Resume 102">Resume 102</a></li>
+        <li><a href="http://resumecompanion.com" title="How to write your resume">How to write your resume</a></li>
+      </ul>
+    </section>'
+
+    sidebar.save
+
+    puts "create default sidebar"
+
+
+  end
 end

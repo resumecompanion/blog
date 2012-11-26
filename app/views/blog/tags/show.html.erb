@@ -25,9 +25,9 @@
     </div>
     <% end %>
   </div>
-  <%= paginate @posts %>
+  <%= paginate @posts, :params => { :at => nil } %>
 </div>
 
 <div id="sidebar">
-  <%=raw Blog::Sidebar.first.content %>
+  <%=raw @sidebar.try(:content) %>
 </div>

@@ -25,6 +25,8 @@ module Blog
         copy_file "migrations/create_blog_tags.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_blog_tags.rb"
         sleep 0.1
         copy_file "migrations/create_blog_post_tag_relations.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_blog_post_tag_relations.rb"
+        sleep 0.1
+        copy_file "migrations/create_blog_settings.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_blog_settings.rb"
       end
 
       # def show_readme
