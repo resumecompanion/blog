@@ -24,7 +24,7 @@
             <td><%= post.updated_at %></td>
             <td><%= post.created_at %></td>
             <td>
-              <%= link_to "Preview", blog.admin_post_path(post), :class => "btn btn-mini" %>
+              <%= link_to "Preview", blog.post_path(post), :class => "btn btn-mini", :target => "_blank" %>
               <%= link_to "Edit", blog.edit_admin_post_path(post), :class => "btn btn-mini" %>
               <%= link_to "Delete", blog.admin_post_path(post), :class => "btn btn-mini btn-danger", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
             </td>

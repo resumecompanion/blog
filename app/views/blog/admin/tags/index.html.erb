@@ -20,6 +20,7 @@
             <td><%= tag.slug %></td>
             <td><%= tag.is_enabled? ? "Yes" : "No" %></td>
             <td>
+              <%= link_to "Preview", blog.tag_path(tag), :class => "btn btn-mini", :target => "_blank" %>
               <%= link_to "Edit", blog.edit_admin_tag_path(tag), :class => "btn btn-mini" %>
             </td>
           </tr>

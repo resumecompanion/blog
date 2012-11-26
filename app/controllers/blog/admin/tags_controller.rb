@@ -11,7 +11,6 @@ module Blog
       end
 
       def edit
-        @tag = Blog::Tag.find(params[:id])
       end
 
       def update
@@ -25,7 +24,7 @@ module Blog
       protected
 
       def find_tag
-        @tag = Blog::Tag.find(params[:id])
+        @tag = Blog::Tag.find_by_slug(params[:id])
       end
     end
   end

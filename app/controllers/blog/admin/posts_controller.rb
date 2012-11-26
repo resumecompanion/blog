@@ -46,7 +46,7 @@ module Blog
       protected
 
       def find_post
-        @post = Blog::Post.find(params[:id])
+        @post = Blog::Post.find_by_slug(params[:id])
       end
     end
   end
