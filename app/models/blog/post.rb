@@ -5,7 +5,7 @@ module Blog
                     :old_id, :generate_slug, :post_tags
     attr_accessor :generate_slug, :post_tags
 
-    paginates_per 20
+    paginates_per 10
 
     belongs_to :author, :class_name => "Blog::User", :foreign_key => :author_id
     belongs_to :sidebar, :class_name => "Blog::Sidebar", :foreign_key => :sidebar_id

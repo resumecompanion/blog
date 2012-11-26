@@ -1,0 +1,24 @@
+<div id="main">
+  <div id="post">
+    <h1><%= @post.title %></h1>
+    <div class="details">
+      <span class="posted-at">Posted on Nov 18</span>
+      <span class="author">by Joe Flanagan</span>
+    </div>
+
+    <div class="content">
+      <%=raw @post.content %>
+    </div>
+
+    <div class="more-information">
+      <div>Tags: <%=raw @post.tags.map { |tag| link_to tag.name, "" }.join(", ") %></div>
+    </div>
+
+    <%= render "social_buttons", :post => @post %>
+    <%= render "disqus" %>
+  </div>
+</div>
+
+<div id="sidebar">
+  <%=raw @post.sidebar.try(:content) %>
+</div>
