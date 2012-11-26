@@ -1,0 +1,33 @@
+<div id="main">
+  <h1>Tag:<%= @tag.name %></h1>
+  <div id="posts">
+    <% @posts.each do |post| %>
+    <div class="post">
+      <h2><%= link_to post.title, blog.post_path(post) %></h2>
+
+      <div class='clearfix'>
+        <%=raw post.excerpt %>
+      </div>
+
+      <div class="read-more">
+        <%= link_to("Read More...", blog.post_path(post)) %>
+      </div>
+
+      <div class='details'>
+        <span class='posted-at'>
+          Posted on <%= l(post.published_at.to_date, :format => :short) %>
+        </span>
+
+        <span class='author'>
+          By <%= post.author.nickname if post.author.present? %>.
+        </span>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
+</div>
+
+<div id="sidebar">
+  <%=raw Blog::Sidebar.first.content %>
+</div>

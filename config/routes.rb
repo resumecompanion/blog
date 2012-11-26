@@ -19,6 +19,7 @@ Blog::Engine.routes.draw do
   end
 
   resources :posts, :only => [:index, :show]
+  resources :tags, :only => [:show]
 
   root :to => 'posts#index'
 end

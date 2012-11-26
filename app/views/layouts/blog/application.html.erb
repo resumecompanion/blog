@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
   <%= stylesheet_link_tag    "blog/application", :media => "all" %>
   <%= javascript_include_tag "blog/application" %>
+  <%= render_blog_page_title(@title) %>
+  <%= render_blog_meta_description(@meta_description) %>
+  <%= render_blog_meta_keywords(@meta_keywords) %>
   <%= csrf_meta_tags %>
 </head>
 <body>

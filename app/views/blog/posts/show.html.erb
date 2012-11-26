@@ -11,7 +11,7 @@
     </div>
 
     <div class="more-information">
-      <div>Tags: <%=raw @post.tags.map { |tag| link_to tag.name, "" }.join(", ") %></div>
+      <div>Tags: <%=raw @post.tags.map { |tag| link_to tag.name, blog.tag_path(tag) }.join(", ") %></div>
     </div>
 
     <%= render "social_buttons", :post => @post %>

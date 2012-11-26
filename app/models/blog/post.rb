@@ -18,6 +18,10 @@ module Blog
 
     validates_presence_of :author_id, :title
 
+    def to_param
+      self.slug
+    end
+
     protected
 
     def handle_slug
