@@ -11,7 +11,7 @@
 <body>
   <% if blog_user_signed_in? && current_blog_user.is_admin? %>
   <div id="admin-bar">
-    <%= link_to "Manage Your CMS", blog.admin_users_path, :class => "admin-button" %>
+    <%= link_to "Manage Your Blog", blog.admin_users_path, :class => "admin-button" %>
     <%= link_to "Logout", blog.destroy_blog_user_session_path, :class => "logout-button" %>
   </div>
   <% end %>
