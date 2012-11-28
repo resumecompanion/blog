@@ -175,7 +175,7 @@ namespace :blog do
         <li><a href="http://resumecompanion.blogspot.com/" class="blogger" target="_blank" title="Blogger">Blogger</a></li>
         <li><a href="http://pinterest.com/resumecompanion/" class="pinterest" target="_blank" title="Pinterest">Pinterest</a></li>
         <li><a href=" https://www.youtube.com/resumecompanionvideo" class="youtube" target="_blank" title="Youtube">Youtube</a></li>
-        <li><a href="/blog/post.rss" class="rss" target="_blank" title="RSS">RSS</a></li>
+        <li><a href="/blog/posts.rss" class="rss" target="_blank" title="RSS">RSS</a></li>
       </ul>
     </section>
 
