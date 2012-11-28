@@ -1,5 +1,10 @@
 module Blog
   class Tag < ActiveRecord::Base
+
+    # hack for will_paginate
+    ::ActiveRecord::Relation.send :include, Kaminari::ActiveRecordRelationMethods
+    ::ActiveRecord::Relation.send :include, Kaminari::PageScopeMethods
+
     attr_accessible :name, :slug, :meta_description, :meta_keywords, :generate_slug, :is_enabled
     attr_accessor :generate_slug
 

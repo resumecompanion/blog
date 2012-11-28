@@ -1,5 +1,9 @@
 module Blog
   class Post < ActiveRecord::Base
+    # hack for will_paginate
+    ::ActiveRecord::Relation.send :include, Kaminari::ActiveRecordRelationMethods
+    ::ActiveRecord::Relation.send :include, Kaminari::PageScopeMethods
+
     attr_accessible :author_id, :sidebar_id, :title, :slug, :meta_description,
                     :meta_keywords, :content, :excerpt, :is_published, :published_at,
                     :old_id, :generate_slug, :post_tags
