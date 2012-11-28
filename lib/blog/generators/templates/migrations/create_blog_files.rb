@@ -6,5 +6,7 @@ class CreateBlogFiles < ActiveRecord::Migration
       t.string :title
       t.timestamps
     end
+
+    add_index :blog_files, :blog_user_id
   end
 end

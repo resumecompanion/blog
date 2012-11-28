@@ -9,5 +9,8 @@ class CreateBlogTags < ActiveRecord::Migration
       t.integer :old_id
       t.timestamps
     end
+
+    add_index :blog_tags, :slug
+    add_index :blog_tags, :is_enabled
   end
 end

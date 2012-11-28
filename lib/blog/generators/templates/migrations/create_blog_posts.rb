@@ -14,5 +14,10 @@ class CreateBlogPosts < ActiveRecord::Migration
       t.integer :old_id
       t.timestamps
     end
+
+    add_index :blog_posts, :author_id
+    add_index :blog_posts, :sidebar_id
+    add_index :blog_posts, :slug
+    add_index :blog_posts, :is_published
   end
 end

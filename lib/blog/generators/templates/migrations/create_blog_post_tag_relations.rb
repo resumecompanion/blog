@@ -5,5 +5,8 @@ class CreateBlogPostTagRelations < ActiveRecord::Migration
       t.integer :tag_id
       t.timestamps
     end
+
+    add_index :blog_post_tag_relations, :post_id
+    add_index :blog_post_tag_relations, :tag_id
   end
 end
