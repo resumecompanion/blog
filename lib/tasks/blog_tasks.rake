@@ -155,18 +155,18 @@ namespace :blog do
     sidebar = Blog::Sidebar.new
     sidebar.name = "default sidebar"
     sidebar.content = '
-    <section>
+    <div>
       <p>
         <img alt="" src="/uploads/blog/file/image/112/large_banner1-3dd65ef96b799bd188edf6a3baf428f4.png" style="width: 300px; height: 156px;" /></p>
-    </section>
-    <section>
+    </div>
+    <div>
       <h3 class="facebook-fan-page">
         Join Us on Facebook</h3>
       <p>
         <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fresumecompanion&amp;width=300&amp;height=285&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23f0f5fb&amp;stream=false&amp;header=false" style="border:none; overflow:hidden; width:300px; height:285px;"></iframe></p>
-    </section>
+    </div>
 
-    <section class="fan-pages">
+    <div class="fan-pages">
       <h3>Follow Us!</h3>
       <ul>
         <li><a href="http://www.facebook.com/resumecompanion" class="facebook" target="_blank" title="Facebook">Facebook</a></li>
@@ -177,16 +177,16 @@ namespace :blog do
         <li><a href=" https://www.youtube.com/resumecompanionvideo" class="youtube" target="_blank" title="Youtube">Youtube</a></li>
         <li><a href="/blog/posts.rss" class="rss" target="_blank" title="RSS">RSS</a></li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <div>
       <h3>Resume For Beginners!</h3>
       <ul>
         <li><a href="http://resumecompanion.com" title="Resume 101">Resume 101</a></li>
         <li><a href="http://resumecompanion.com" title="Resume 102">Resume 102</a></li>
         <li><a href="http://resumecompanion.com" title="How to write your resume">How to write your resume</a></li>
       </ul>
-    </section>'
+    </div>'
 
     sidebar.save
 
