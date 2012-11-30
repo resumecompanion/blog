@@ -10,6 +10,8 @@
       <%=raw @post.content %>
     </div>
 
+    <a class="free-resume-builder-banner" href="http://resumecompanion.com" title="Free Resume Builder">Free Resume Builder</a>
+
     <div class="more-information">
       <div>Tags: <%=raw @post.tags.map { |tag| link_to tag.name, blog.tag_path(tag) }.join(", ") %></div>
     </div>
