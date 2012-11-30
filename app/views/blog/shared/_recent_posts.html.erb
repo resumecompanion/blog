@@ -1,0 +1,8 @@
+<div>
+  <h3>Recent Posts</h3>
+  <ul>
+  <% @recent_posts.each do |post| %>
+    <li><%= link_to post.title, blog.post_path(post) %></li>
+  <% end %>
+  </ul>
+</div>
