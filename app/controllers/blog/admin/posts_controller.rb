@@ -8,7 +8,7 @@ module Blog
 
       def index
         if params[:q].present?
-          @posts = Blog::Post.search(:conditions => { :title => params[:q]}).page(params[:page])
+          @posts = Blog::Post.search(:conditions => { :title => params[:q]}, :order => "published_at", :sort_mode => :desc).page(params[:page])
         else
           @posts = Blog::Post.page(params[:page]).includes(:author).order("published_at desc")
         end

@@ -23,8 +23,10 @@ module Blog
     validates_presence_of :author_id, :title
 
     define_index do
-      indexes title, :as => :title, :sortable => true
-      indexes content, :as => :content, :sortable => true
+      indexes title, :as => :title
+      indexes content, :as => :content
+      index published_at, :as => :published_at, :sortable => true
+      has published_at
     end
 
     def to_param
