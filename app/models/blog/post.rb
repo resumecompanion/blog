@@ -22,6 +22,11 @@ module Blog
 
     validates_presence_of :author_id, :title
 
+    define_index do
+      indexes title, :as => :title, :sortable => true
+      indexes content, :as => :content, :sortable => true
+    end
+
     def to_param
       self.slug
     end

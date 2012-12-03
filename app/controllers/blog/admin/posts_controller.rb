@@ -7,7 +7,11 @@ module Blog
       before_filter :find_post, :only => [:edit, :update, :destroy]
 
       def index
-        @posts = Blog::Post.page(params[:page]).includes(:author).order("published_at desc")
+        if params[:q].present?
+          @posts = Blog::Post.search(:conditions => { :title => params[:q]}).page(params[:page])
+        else
+          @posts = Blog::Post.page(params[:page]).includes(:author).order("published_at desc")
+        end
       end
 
       def new
