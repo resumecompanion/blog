@@ -14,7 +14,7 @@ module Blog
       @meta_description = params[:page].present? ? "#{@tag.meta_description} - Page #{params[:page]}" : @tag.meta_description
       @meta_keywords = @tag.meta_keywords
 
-      @sidebar_id = Blog::Setting.find_by_key("global:tags:sidebar_id").try(:value)
+      @sidebar_id = get_setting("global:tags:sidebar_id")
       @sidebar = Blog::Sidebar.find(@sidebar_id) rescue nil
     end
   end

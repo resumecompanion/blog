@@ -5,16 +5,16 @@ module Blog
 
       respond_to do |format|
         format.html {
-          @title = params[:page].present? ? "#{Blog::Setting.find_by_key("global:meta_title").try(:value)} - Page #{params[:page]}" : Blog::Setting.find_by_key("global:meta_title").try(:value)
-          @meta_description = params[:page].present? ? "#{Blog::Setting.find_by_key("global:meta_description").try(:value)} - Page #{params[:page]}" : Blog::Setting.find_by_key("global:meta_description").try(:value)
-          @meta_keywords = Blog::Setting.find_by_key("global:meta_keywords").try(:value)
+          @title = params[:page].present? ? "#{get_setting("global:meta_title")} - Page #{params[:page]}" : get_setting("global:meta_title")
+          @meta_description = params[:page].present? ? "#{get_setting("global:meta_description")} - Page #{params[:page]}" : get_setting("global:meta_description")
+          @meta_keywords = get_setting("global:meta_keywords")
 
-          @sidebar_id = Blog::Setting.find_by_key("global:posts:sidebar_id").try(:value)
+          @sidebar_id = get_setting("global:posts:sidebar_id")
           @sidebar = Blog::Sidebar.find(@sidebar_id) rescue nil
         }
 
         format.rss {
-          @title = Blog::Setting.find_by_key("global:meta_title").try(:value)
+          @title = get_setting("global:meta_title")
         }
       end
     end
@@ -31,7 +31,7 @@ module Blog
       @meta_description = @post.meta_description
       @meta_keywords = @post.meta_keywords
 
-      @disqus_shortname = Blog::Setting.find_by_key("global:disqus:shortname").try(:value)
+      @disqus_shortname = get_setting("global:disqus:shortname")
     end
 
     def render_404

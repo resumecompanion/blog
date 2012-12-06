@@ -10,5 +10,9 @@ module Blog
     def find_recent_posts
       @recent_posts = Blog::Post.where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC").limit(10)
     end
+
+    def get_setting(key)
+      Blog::Setting.find_by_key(key).try(:value)
+    end
   end
 end
