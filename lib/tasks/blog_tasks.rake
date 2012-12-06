@@ -149,6 +149,7 @@ namespace :blog do
     setting = Blog::Setting.create(:key => "global:posts:sidebar_id", :value => 1, :description => "This will be your posts' sidebar id")
     setting = Blog::Setting.create(:key => "global:tags:sidebar_id", :value => 1, :description => "This will be your tags' sidebar id")
     setting = Blog::Setting.create(:key => "global:disqus:shortname", :value => "resumebuilder1", :description => "This is for disqus")
+    setting = Blog::Setting.create(:key => "global:ga_account", :value => "UA-513849-6", :description => "This is GA account")
 
     puts "create settings"
 
