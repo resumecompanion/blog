@@ -192,7 +192,25 @@ namespace :blog do
     sidebar.save
 
     puts "create default sidebar"
+  end
 
+  task :meta_title => :environment do
+    config = YAML.load_file("#{Rails.root}/config/database.yml")[Rails.env]
+    database_config = HashWithIndifferentAccess.new(config)
 
+    client = Mysql2::Client.new(:host => database_config[:host] || "localhost", :username => database_config[:username], :password => database_config[:password], :database => database_config[:database])
+
+    amount = 0
+
+    Blog::Post.find_each do |post|
+      result = client.query("select * from seo_meta where seo_meta_id = #{post.old_id} and seo_meta_type = 'Refinery::Page::Translation'", :as => :hash, :symbolize_keys => true).first
+      if result.present? && result[:browser_title].present?
+        amount += 1
+        post.update_attributes(:meta_title => result[:browser_title])
+        puts "#{post.title} => #{result[:browser_title]}"
+      end
+    end
+
+    puts "Insert #{amount} meta_title"
   end
 end
