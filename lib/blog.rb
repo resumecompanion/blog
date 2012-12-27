@@ -7,6 +7,7 @@ require "stringex"
 
 require "blog/engine"
 require "blog/generators/install_generator"
+require "blog/generators/add_meta_title_generator"
 
 module Blog
   def self.setup

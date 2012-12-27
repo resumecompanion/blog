@@ -6,7 +6,7 @@ module Blog
 
     attr_accessible :author_id, :sidebar_id, :title, :slug, :meta_description,
                     :meta_keywords, :content, :excerpt, :is_published, :published_at,
-                    :old_id, :generate_slug, :post_tags
+                    :old_id, :generate_slug, :post_tags, :meta_title
     attr_accessor :generate_slug, :post_tags
 
     paginates_per 10
