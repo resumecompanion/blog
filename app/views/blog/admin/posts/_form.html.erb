@@ -6,6 +6,7 @@
 <%= f.input :content, :input_html => { :id => "content-editor", :data => { :broswe => admin_ckeditor_index_path, :upload => admin_ckeditor_index_path(:user_id => current_blog_user.id) } } %>
 <%= f.input :excerpt, :input_html => { :id => "excerpt-editor", :data => { :broswe => admin_ckeditor_index_path, :upload => admin_ckeditor_index_path(:user_id => current_blog_user.id) } } %>
 
+<%= f.input :meta_title, :input_html => { :class => "span12" } %>
 <%= f.input :meta_description, :input_html => { :class => "span12" } %>
 <%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
 <%= f.input :post_tags, :label => "Tags", :hint => "( ex: \"Resume Template, Resume Example, Resume\", seperate tags by \",\" )", :input_html => { :class => "span12", :value => f.object.tags.map { |tag| tag.name }.join(", ") } %>
