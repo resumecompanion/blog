@@ -28,6 +28,7 @@ module Blog
       end
 
       @title = @post.title
+      @meta_title = @post.meta_title
       @meta_description = @post.meta_description
       @meta_keywords = @post.meta_keywords
 
