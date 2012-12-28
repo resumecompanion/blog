@@ -213,4 +213,32 @@ namespace :blog do
 
     puts "Insert #{amount} meta_title"
   end
+
+  task :convert_s3_url => :environment do
+    Blog::Post.find_each do |post|
+      body = Nokogiri::HTML.fragment(post.content)
+
+      body.css('a').each do |link|
+        link[:href] = link[:href].gsub("resumecompanionp-staging", "resumecompanionp") if link[:href] && link[:href].match(/resumecompanionp-staging\.s3\.amazonaws\.com/)
+      end
+
+      body.css('img').each do |img|
+        img[:src] = img[:src].gsub("resumecompanionp-staging", "resumecompanionp") if img[:src] && img[:src].match(/resumecompanionp-staging\.s3\.amazonaws\.com/)
+      end
+
+      excerpt = Nokogiri::HTML.fragment(post.excerpt)
+
+      excerpt.css('a').each do |link|
+        link[:href] = link[:href].gsub("resumecompanionp-staging", "resumecompanionp") if link[:href] && link[:href].match(/resumecompanionp-staging\.s3\.amazonaws\.com/)
+      end
+
+      excerpt.css('img').each do |img|
+        img[:src] = img[:src].gsub("resumecompanionp-staging", "resumecompanionp") if img[:src] && img[:src].match(/resumecompanionp-staging\.s3\.amazonaws\.com/)
+      end
+
+      post.content = body.inner_html
+      post.excerpt = excerpt.inner_html
+      post.save
+    end
+  end
 end
