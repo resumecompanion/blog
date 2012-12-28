@@ -17,6 +17,7 @@ module Blog
     has_many :post_tag_relations
     has_many :tags, :through => :post_tag_relations
 
+    before_save :set_meta_title
     before_create :handle_slug
     before_save :handle_tags
 
@@ -43,6 +44,10 @@ module Blog
     end
 
     protected
+
+    def set_meta_title
+      self.meta_title = self.title if self.meta_title.blank?
+    end
 
     def handle_slug
       if generate_slug != false
