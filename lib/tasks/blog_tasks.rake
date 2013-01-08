@@ -241,4 +241,21 @@ namespace :blog do
       post.save
     end
   end
+
+  task :convert_s3_url_to_staging => :environment do
+    Blog::Post.find_each do |post|
+      body = Nokogiri::HTML.fragment(post.content)
+
+      body.css('a').each do |link|
+        link[:href] = link[:href].gsub("resumecompanionp", "resumecompanionp-staging") if link[:href] && link[:href].match(/resumecompanionp\.s3\.amazonaws\.com/)
+      end
+
+      body.css('img').each do |img|
+        img[:src] = img[:src].gsub("resumecompanionp", "resumecompanionp-staging") if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
+      end
+
+      post.content = body.inner_html
+      post.save
+    end
+  end
 end
