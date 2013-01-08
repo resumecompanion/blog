@@ -305,7 +305,37 @@ namespace :blog do
         end
       end
 
+      excerpt = Nokogiri::HTML.fragment(post.excerpt)
+
+      excerpt.css('img').each do |img|
+        if img[:src] && match = img[:src].match(/resumecompanionp(\-staging)?\.s3\.amazonaws\.com\/uploads\/blog\/file\/image\/([0-9]*)\/(.*)/)
+          file_id = match[2].to_i
+          original_filename = match[3]
+
+          puts "@@@@@@#{post.slug}"
+
+          file = Blog::File.find(file_id) rescue nil
+          if file.present?
+
+            filename = post.slug
+            filename += "-" + image_counter.to_s if image_counter != 0
+
+            if file.image.rename(filename)
+
+              result_filename = File.basename(file.image.path)
+
+              img[:src] = img[:src].gsub(original_filename, result_filename)
+
+              puts "@@@@@@#{file_id} - #{original_filename} => #{result_filename}"
+              same_results << "@@@@@@#{file_id} - #{original_filename} => #{result_filename}" if original_filename == result_filename
+              image_counter += 1
+            end
+          end
+        end
+      end
+
       post.content = body.inner_html
+      post.excerpt = excerpt.inner_html
       post.save
     end
 
