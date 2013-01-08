@@ -257,11 +257,11 @@ namespace :blog do
       excerpt = Nokogiri::HTML.fragment(post.excerpt)
 
       excerpt.css('a').each do |link|
-        link[:href] = link[:href].gsub("resumecompanionp", "resumecompanionp-staging") if link[:href] && link[:href].match(/resumecompanionp-staging\.s3\.amazonaws\.com/)
+        link[:href] = link[:href].gsub("resumecompanionp", "resumecompanionp-staging") if link[:href] && link[:href].match(/resumecompanionp\.s3\.amazonaws\.com/)
       end
 
       excerpt.css('img').each do |img|
-        img[:src] = img[:src].gsub("resumecompanionp", "resumecompanionp-staging") if img[:src] && img[:src].match(/resumecompanionp-staging\.s3\.amazonaws\.com/)
+        img[:src] = img[:src].gsub("resumecompanionp", "resumecompanionp-staging") if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
       end
 
       post.content = body.inner_html
