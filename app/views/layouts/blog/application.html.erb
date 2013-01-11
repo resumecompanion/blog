@@ -3,6 +3,16 @@
 <head>
   <%= stylesheet_link_tag    "blog/application", :media => "all" %>
   <%= javascript_include_tag "blog/application" %>
+
+  <% if Rails.env.production? || Rails.env.staging? %>
+
+  <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+  <script type="text/javascript">
+    new HelloBar(51615,72839);
+  </script>
+
+  <% end %>
+
   <%= render_blog_page_title(@meta_title || @title) %>
   <%= render_blog_meta_description(@meta_description) %>
   <%= render_blog_meta_keywords(@meta_keywords) %>
