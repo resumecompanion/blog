@@ -11,6 +11,8 @@ module Blog
 
           @sidebar_id = get_setting("global:posts:sidebar_id")
           @sidebar = Blog::Sidebar.find(@sidebar_id) rescue nil
+
+          @canonical_url = blog.posts_url(:page => params[:page] == "1" ? nil : params[:page])
         }
 
         format.rss {
@@ -31,6 +33,7 @@ module Blog
       @meta_title = @post.meta_title
       @meta_description = @post.meta_description
       @meta_keywords = @post.meta_keywords
+      @canonical_url = blog.post_url(@post)
 
       @disqus_shortname = get_setting("global:disqus:shortname")
     end

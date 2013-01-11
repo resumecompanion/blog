@@ -13,6 +13,7 @@ module Blog
       @title = params[:page].present? ? "Tag:#{@tag.name} - Page #{params[:page]}" : "Tag:#{@tag.name}"
       @meta_description = params[:page].present? ? "#{@tag.meta_description} - Page #{params[:page]}" : @tag.meta_description
       @meta_keywords = @tag.meta_keywords
+      @canonical_url = blog.tag_url(@tag, :page => params[:page] == "1" ? nil : params[:page])
 
       @sidebar_id = get_setting("global:tags:sidebar_id")
       @sidebar = Blog::Sidebar.find(@sidebar_id) rescue nil
