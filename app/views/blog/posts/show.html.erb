@@ -2,8 +2,8 @@
   <div id="post">
     <h1><%= @post.title %></h1>
     <div class="details">
-      <span class="posted-at">Posted on Nov 18</span>
-      <span class="author">by Joe Flanagan</span>
+      <span class="posted-at">Posted on <%= l(@post.published_at.to_date, :format => :short) %></span>
+      <span class="author">By <%= @post.author.nickname if @post.author.present? %>.</span>
     </div>
 
     <div class="content">
