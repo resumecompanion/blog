@@ -341,6 +341,37 @@ namespace :blog do
 
     puts "The same results: #{same_results.length}"
     puts same_results
+  end
 
+  task :convert_s3_url_to_rc => :environment do
+    Blog::Post.find_each do |post|
+      body = Nokogiri::HTML.fragment(post.content)
+
+      body.css('img').each do |img|
+        if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
+          puts "======"
+          puts img
+          img[:src] = img[:src].gsub("resumecompanionp.s3.amazonaws.com", "image.resumecompanion.com")
+          puts img
+          puts "======"
+        end
+      end
+
+      excerpt = Nokogiri::HTML.fragment(post.excerpt)
+
+      excerpt.css('img').each do |img|
+        if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
+          puts "======"
+          puts img
+          img[:src] = img[:src].gsub("resumecompanionp.s3.amazonaws.com", "image.resumecompanion.com")
+          puts img
+          puts "======"
+        end
+      end
+
+      post.content = body.inner_html
+      post.excerpt = excerpt.inner_html
+      post.save
+    end
   end
 end
