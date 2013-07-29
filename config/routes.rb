@@ -1,4 +1,6 @@
 Blog::Engine.routes.draw do
+  get '/posts', to: redirect('/blog')
+
   devise_for :blog_user,
              :class_name => "Blog::User",
              :path => 'users',
@@ -25,4 +27,5 @@ Blog::Engine.routes.draw do
   match "/404" => "posts#render_404"
 
   root :to => 'posts#index'
+
 end
