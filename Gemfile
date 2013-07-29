@@ -13,6 +13,7 @@ gem "compass-rails"
 gem "carrierwave"
 gem "kaminari"
 gem "stringex"
+gem 'mysql2'
 gem 'thinking-sphinx', :require => "thinking_sphinx"
 
 # Declare any dependencies that are still in development here instead of in

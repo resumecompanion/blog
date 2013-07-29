@@ -1,5 +1,5 @@
 module Blog
-  class PostsController < ApplicationController
+  class PostsController < Blog::ApplicationController
     def index
       @posts = Blog::Post.includes(:author).where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC").page(params[:page]).per(10)
 
