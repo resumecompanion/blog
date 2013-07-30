@@ -1,6 +1,6 @@
 Blog::Engine.routes.draw do
-  get '/posts', to: redirect('/blog')
 
+  get '/posts', to: redirect('/blog'), constraints: lambda { |request| request.params[:page].nil? }
   devise_for :blog_user,
              :class_name => "Blog::User",
              :path => 'users',
