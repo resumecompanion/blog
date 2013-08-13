@@ -1,6 +1,5 @@
 Blog::Engine.routes.draw do
 
-  get '/posts', to: redirect('/blog'), constraints: lambda { |request| request.params[:page].nil? }
   devise_for :blog_user,
              :class_name => "Blog::User",
              :path => 'users',
@@ -21,6 +20,12 @@ Blog::Engine.routes.draw do
     root :to => 'users#index'
   end
 
+  unless Rails.env.development?
+    match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http').gsub('3000', '3001')}, constraints: lambda {|request| puts request.path; request.ssl? && !(request.path =~ /users/ || request.path =~ /admin/)}
+  end
+
+  get '/posts', to: redirect('/blog'), constraints: lambda { |request| request.params[:page].nil? && !request.ssl? }
+  
   resources :posts, :only => [:index, :show]
   resources :tags, :only => [:show]
 
