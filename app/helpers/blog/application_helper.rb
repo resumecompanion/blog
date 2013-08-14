@@ -18,7 +18,7 @@ module Blog
     end
 
     def render_canonical_url(url)
-      tag(:link, :rel => :canonical, :href => @canonical_url) if url
+      tag(:link, :rel => :canonical, :href => @canonical_url) if url && !request.ssl?
     end
   end
 end
