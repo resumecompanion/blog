@@ -12,3 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require blog/application/open_remote_links_in_new_tab
