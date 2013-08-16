@@ -1,5 +1,6 @@
 module Blog
   class PostsController < Blog::ApplicationController
+    before_filter :redirect_if_https, only: [:index]
     def index
       @posts = Blog::Post.includes(:author).where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC").page(params[:page]).per(10)
 
@@ -40,6 +41,11 @@ module Blog
 
     def render_404
       @title = "Page not found"
+    end
+
+    private
+    def redirect_if_https
+      redirect_to root_url(protocol: 'http'), status: :moved_permanently if request.ssl?
     end
   end
 end
