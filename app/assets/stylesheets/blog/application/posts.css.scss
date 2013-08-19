@@ -63,13 +63,18 @@ h1#index-title {
 
   .details {
     margin-bottom:10px;
-    height:20px;
+    height:50px;
     font-size:11px;
     font-style:italic;
     color:#999999;
 
     .posted-at, .author {
       margin-right:5px;
+    }
+
+    #social-buttons {
+      margin-top:15px;
+      margin-bottom:20px;
     }
   }
 

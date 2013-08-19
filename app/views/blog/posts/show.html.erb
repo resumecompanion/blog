@@ -4,6 +4,7 @@
     <div class="details">
       <span class="posted-at">Posted on <%= l(@post.published_at.to_date, :format => :short) %></span>
       <span class="author">By <%= @post.author.nickname if @post.author.present? %>.</span>
+    <%= render "social_buttons", :post => @post %>
     </div>
 
     <div class="content">
