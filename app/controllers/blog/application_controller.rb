@@ -9,7 +9,7 @@ module Blog
     end
 
     def find_recent_posts
-      @recent_posts = Blog::Post.where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC").limit(10)
+      @recent_posts = Blog::Post.where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC").limit(3)
     end
 
     def get_setting(key)
