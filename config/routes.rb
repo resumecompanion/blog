@@ -21,7 +21,7 @@ Blog::Engine.routes.draw do
   end
 
   unless Rails.env.development?
-    match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http').gsub('3000', '3001')}, constraints: lambda {|request| puts request.path; request.ssl? && !(request.path =~ /users/ || request.path =~ /admin/)}
+    match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http')}, constraints: lambda {|request| request.ssl?}
   end
 
   get '/posts', to: redirect('/blog'), constraints: lambda { |request| request.params[:page].nil? && !request.ssl? && request.format != 'rss' }
