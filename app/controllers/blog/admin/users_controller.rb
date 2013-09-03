@@ -5,6 +5,7 @@ module Blog
 
       before_filter :require_admin
       before_filter :find_user, :only => [:show, :edit, :update, :destroy]
+      before_filter :ignore_blank_passwords, only: [:update]
 
       def index
         @users = Blog::User.all
@@ -49,6 +50,13 @@ module Blog
 
       def find_user
         @user = Blog::User.find(params[:id])
+      end
+
+      def ignore_blank_passwords
+        if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+          params[:user].delete :password
+          params[:user].delete :password_confirmation
+        end
       end
 
     end

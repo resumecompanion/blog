@@ -6,5 +6,6 @@
 
 <%= field_set_tag "User Attributes" do %>
   <%= f.input :nickname %>
+  <%= f.input :gplus_url, label: 'Google+ URL' %>
   <%= f.input :is_admin, :label => "Admin", :as => "select", :include_blank => false %>
 <% end %>

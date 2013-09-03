@@ -1,13 +1,19 @@
 <div id="main">
-  <div id="post">
-    <h1><%= @post.title %></h1>
+  <div id="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 itemprop="name headline"><%= @post.title %></h1>
     <div class="details">
-      <span class="posted-at">Posted on <%= l(@post.published_at.to_date, :format => :short) %></span>
-      <span class="author">By <%= @post.author.nickname if @post.author.present? %>.</span>
+      <span class="posted-at">Posted on <span itemprop="datePublished"><%= l(@post.published_at.to_date, :format => :long) %></span></span>
+      <span class="author">By 
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span itemprop="name">
+              <%= link_to @post.author.nickname, @post.author.gplus_url, rel: 'author', itemprop: 'url' %>
+            </span>
+        </span>
+      .</span>
     <%= render "social_buttons", :post => @post %>
     </div>
 
-    <div class="content">
+    <div class="content" itemprop="articleBody">
       <%=raw @post.content %>
     </div>
 

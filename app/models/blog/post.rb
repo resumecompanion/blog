@@ -51,7 +51,7 @@ module Blog
 
     def handle_slug
       if generate_slug != false
-        self.slug = title.to_url
+        self.slug = slug.to_url
         if self.slug.present?
           same_pages_count = self.class.where(:slug => slug).size
           self.slug = "#{self.slug}-#{same_pages_count}" if same_pages_count > 0

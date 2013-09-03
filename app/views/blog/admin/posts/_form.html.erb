@@ -1,5 +1,5 @@
 <%= f.input :title, :input_html => { :class => "span12" } %>
-<%= f.input :slug, :hint => " (It'll be generated automatically.)", :input_html => { :class => "span12", :disabled => true } %>
+<%= f.input :slug, :hint => " (It'll be generated automatically.)", :input_html => { :class => "span12", :disabled => !@post.new_record? } %>
 <%= f.input :author_id, :as => :select, :collection => @users.map { |user| [user.nickname, user.id] }, :include_blank => false, :selected => f.object.new_record? ? current_blog_user.id : f.object.author_id %>
 <%= f.input :sidebar_id, :as => :select, :collection => Blog::Sidebar.all.map { |sidebar| [sidebar.name, sidebar.id] }, :include_blank => false %>
 
