@@ -11,4 +11,5 @@
  *= require blog/application/layout
  *= require blog/application/posts
  *= require blog/application/sidebar
+ *= require blog/application/error_page
  */
