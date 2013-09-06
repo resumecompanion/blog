@@ -2,7 +2,7 @@ module Blog
   class PostsController < Blog::ApplicationController
     before_filter :redirect_if_https, only: [:index]
     def index
-      @posts = Blog::Post.includes(:author).where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC").page(params[:page]).per(10)
+      @posts = Blog::Post.page(params[:page]).includes(:author).where("is_published = true and published_at < '#{Time.now()}'").order("published_at DESC")
 
       respond_to do |format|
         format.html {
