@@ -18,6 +18,8 @@
   <%= render_blog_meta_keywords(@meta_keywords) %>
   <%= csrf_meta_tags %>
   <%# render_canonical_url(@canonical_url) %>
+
+  <%= yield :header %>
 </head>
 <body>
   <div id="fb-root"></div>

@@ -30,6 +30,10 @@ module Blog
       self.slug
     end
 
+    def first_image_url
+      doc = Nokogiri::HTML(self.content)
+      doc.css('img').first.attr(:src)
+    end
     def images_sitemap
       ha = []
       doc = Nokogiri::HTML(self.content)
