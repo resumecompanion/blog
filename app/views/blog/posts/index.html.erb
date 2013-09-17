@@ -1,3 +1,8 @@
+<% content_for(:header) do %>
+  <% unless params[:page].blank? %>
+<meta name="robots" content="noindex,follow,noodp,noydir"/>
+  <% end %>
+<% end %>
 <h1 id="index-title">Resume Help, Career Tips & Job News From Resume Companion</h1>
 <div id="main">
   <div id="posts">
