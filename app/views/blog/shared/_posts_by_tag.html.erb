@@ -1,0 +1,8 @@
+<div>
+  <h3>Posts by Category</h3>
+  <ul>
+    <% Blog::Tag.where({}).order("name ASC").each do |tag| %>
+      <li><%= link_to tag.name, tag_path(tag) %></li>
+    <% end %>
+  </ul>
+</div>
