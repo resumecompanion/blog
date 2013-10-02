@@ -1,40 +1,45 @@
-<% content_for(:header) do %>
-  <% unless params[:page].blank? %>
-<meta name="robots" content="noindex,follow,noodp,noydir"/>
-  <% end %>
-<% end %>
-<h1 id="index-title">Resume Help, Career Tips & Job News From Resume Companion</h1>
-<div id="main">
-  <div id="posts">
-    <% @posts.each do |post| %>
-    <div class="post">
-      <h2><%= link_to post.title, blog.post_path(post) %></h2>
-
-      <div class='clearfix'>
-        <%=raw post.excerpt %>
+<% @posts.each do |post| %>
+<div class="column one-column with-sidebar blog-fullwidth">
+  <!-- **Blog Entry** -->
+  <article class="blog-entry">
+    <div class="entry-thumb-meta">
+      <div class="entry-thumb">
+        <a href="blog-single.html" title=""> <img src="<%= post.first_image_url%>" alt="" title="" /> </a>
       </div>
-
-      <div class="read-more">
-        <%= link_to("Read More...", blog.post_path(post)) %>
-      </div>
-
-      <div class='details'>
-        <span class='posted-at'>
-          Posted on <%= l(post.published_at.to_date, :format => :short) %>
-        </span>
-
-        <span class='author'>
-          By <%= post.author.nickname if post.author.present? %>.
-        </span>
+      <div class="entry-meta">
+        <div class="date">
+          <span class="icon-calendar"> </span>
+          <p> <%= post.published_at %> </p>
+        </div>
+        <!-- <a href="blog-single.html" title="" class="comments"> <span class="icon-comments"> </span> 16 </a> -->
+        <span class="rounded-bend"> </span>
       </div>
     </div>
-    <% end %>
-  </div>
-  <%= paginate @posts, :params => { :at => nil } %>
-</div>
 
-<div id="sidebar">
-  <%=raw @sidebar.try(:content) %>
-  <%= render "blog/shared/recent_posts" %>
-  <%= render "blog/shared/posts_by_tag" %>
+    <div class="entry-details">
+      <div class="entry-title">
+        <h4> <%= link_to post.title, post_path(post)%> </h4>
+      </div>
+
+      <div class="entry-metadata">
+        <% unless post.tags.empty? %>
+          <div class="tags">
+            <span class="icon-tags"> </span>
+            <% post.tags.each_with_index do |tag, i| %>
+              <%= link_to tag.name, tag_path(tag) %><%= ',' if i < post.tags.count - 1 %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="entry-body">
+        <p> <%=raw post.excerpt %>   </p>
+        <%= link_to "Read More <span class=\"icon-double-angle-right\"> </span>".html_safe, posts_path(post), class: 'read-more' %>
+      </div>
+    </div>
+  </article><!-- **Blog Entry - End** -->
+  <div class="hr"> </div>
 </div>
+<% end %>
+
+<%= paginate @posts, :params => { :at => nil } %>

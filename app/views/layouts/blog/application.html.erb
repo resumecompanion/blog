@@ -1,70 +1,460 @@
-<!DOCTYPE html>
-<html xmlns:fb="http://ogp.me/ns/fb#">  
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
+
 <head>
-  <%= stylesheet_link_tag    "blog/application", :media => "all" %>
-  <%= javascript_include_tag "blog/application" %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<title> Delicate - Multipurpose HTML5 Template </title>
+	
+	<meta name="description" content="">
+	<meta name="author" content="">
+    
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <!-- **Favicon** -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    
+    <!-- **CSS - stylesheets** -->
+    <!-- <link id="default-css" href="style.css" rel="stylesheet" media="all" /> -->
+    <!-- <link id="shortcodes-css" href="shortcodes.css" rel="stylesheet" media="all" />  -->
+    <!-- <link id="skin-css" href="skins/green/style.css" rel="stylesheet" media="all" /> -->
+    
+<%= stylesheet_link_tag    "blog/theme", :media => "all" %>
 
-  <% if Rails.env.production? || Rails.env.staging? %>
-
-  <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
-  <script type="text/javascript">
-    new HelloBar(51615,72839);
-  </script>
-
-  <% end %>
-
-  <%= render_blog_page_title(@meta_title || @title) %>
-  <%= render_blog_meta_description(@meta_description) %>
-  <%= render_blog_meta_keywords(@meta_keywords) %>
-  <%= csrf_meta_tags %>
-  <%# render_canonical_url(@canonical_url) %>
-
-  <%= yield :header %>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/resumecompanion/hwDL" />
+    <!-- **Additional - stylesheets** -->
+    <!-- <link href="responsive.css" rel="stylesheet" media="all" /> -->    
+    
+    <!-- **Font Awesome** -->
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+    <!--[if IE 7]>G
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+    <![endif]-->
+    
+    <!-- **Google - Fonts** -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+    
 </head>
+
 <body>
-  <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-  
-  <% if blog_user_signed_in? && current_blog_user.is_admin? %>
-  <div id="admin-bar">
-    <%= link_to "Manage Your Blog", blog.admin_users_path, :class => "admin-button" %>
-    <%= link_to "Logout", blog.destroy_blog_user_session_path, :class => "logout-button" %>
-  </div>
-  <% end %>
-  <div id="header">
-    <div class="content">
-      <%= link_to "Logo", blog.root_path, :class => "logo" %>
-      <p id="website-description">
-        #1 Resource for Resume Tips<br>
-        Resume Examples, Resume Templates and More
-      </p>
-    </div>
-  </div>
 
-  <div id="navigation">
-    <ul>
-      <% Blog::Navigation.where(:is_hidden => false).order(:position).each do |navigation| %>
-        <li><%= link_to navigation.name, navigation.link %></li>
-      <% end %>
-    </ul>
-  </div>
+<!-- **Wrapper** -->
+<div class="wrapper">
 
-  <div id="container">
+	<!-- **Header** -->
+	<header id="header">
+    
+    	<!-- **Top Bar** -->
+    	<div id="top-bar">
+        	<div class="container">
+                <ul class="social-icons">
+                    <li>
+                        <a href="" title=""> 
+                          <%= image_tag "blog/theme/sociable/hover/facebook.png" %> 
+                          <%= image_tag "blog/theme/sociable/facebook.png" %> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/google.png" %>
+                            <%= image_tag "blog/theme/sociable/google.png" %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/twitter.png" %>
+                            <%= image_tag "blog/theme/sociable/twitter.png" %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/dribble.png" %>
+                            <%= image_tag "blog/theme/sociable/dribble.png" %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/linkedin.png" %>
+                            <%= image_tag "blog/theme/sociable/linkedin.png" %>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- **Top Bar - End** -->
+        
+        <div class="container">
+        	<!-- **Logo - End** -->
+            <div id="logo">
+            	<h2> <a href="index.html" title=""> Delicate <span> Theme </span> </a> </h2>
+            </div><!-- **Logo - End** -->
+            
+            <!-- **Navigation - End** -->
+            <nav id="main-menu">
+            	<ul>
+                	<li> <a href="index.html" title=""> Home </a> <span> </span>                     
+                        <ul>
+                            <li> <a href="index.html" title=""> Home Example 1 </a> </li>
+                            <li> <a href="index-v2.html" title=""> Home Example 2 </a> </li>
+                            <li> <a href="index-v3.html" title=""> Home Example 3 </a> </li>
+                            <li> <a href="index-v4.html" title=""> Home Example 4 </a> </li>
+                        </ul>                            
+                    </li>
+                    <li> <a href="about.html" title=""> About </a> <span> </span> </li>
+                    <li> <a href="side-navigation.html" title=""> Features </a> <span> </span> 
+                    	<ul>
+                            <li> <a href="side-navigation.html" title=""> 100% Fully Responsive </a> </li>
+                            <li> <a href="features-layouts.html" title=""> Boxed &amp; Wide Versions </a> </li>
+                            <li> <a href="features-home.html" title=""> 4 Home Page Options </a> </li>
+                            <li> <a href="features-icons.html" title=""> Font Awesome Icons </a> </li>
+                            <li> <a href="features-valid.html" title=""> Valid HTML5 and CSS3 </a> </li>
+                            <li> <a href="features-contact.html" title=""> 2 Contact Layouts </a> </li>
+                            <li> <a href="features-blog.html" title=""> Blog Page Options </a> </li>
+                            <li> <a href="features-html.html" title=""> Tons of HTML Elements </a> </li>
+                            <li> <a href="features-portfolio.html" title=""> Different Portfolio Columns </a> </li>
+                            <li> <a href="features-sliders.html" title=""> 2 Premium Sliders </a> </li>
+                            <li> <a href="features-googlefonts.html" title=""> Google Web Fonts </a> </li>
+                        </ul>
+                    </li>
 
-    <%= yield %>
+                    <li> <a href="shortcodes-typography.html" title=""> Pages </a> <span> </span> 
+                        <ul>
+                        	<li> <a href="shortcodes-typography.html" title=""> Shortcodes </a>                             
+                            	<ul>
+                                    <li> <a href="shortcodes-typography.html" title=""> Typography </a> </li>
+                                    <li> <a href="shortcodes-pricing-tables.html" title=""> Pricing Tables </a> </li>
+                                    <li> <a href="shortcodes-progress-bars.html" title=""> Progress Bars </a> </li>
+                                    <li> <a href="shortcodes-tabs-toggles.html" title=""> Tabs &amp; Toggles </a> </li>
+                                	<li> <a href="shortcodes-buttons.html" title=""> Buttons </a> </li>
+                                    <li> <a href="shortcodes-dropcap.html" title=""> Dropcap </a> </li>
+                                    <li> <a href="shortcodes-fancyboxes.html" title=""> Fancy Boxes </a> </li>
+                                    <li> <a href="shortcodes-form-elements.html" title=""> Form elements </a> </li>
+                                    <li> <a href="shortcodes-highlighters.html" title=""> Highlighters </a> </li>
+                                    <li> <a href="shortcodes-lists.html" title=""> Unordered Lists </a> </li>
+                                    <li> <a href="shortcodes-ordered-lists.html" title=""> Ordered Lists </a> </li>
+                                    <li> <a href="shortcodes-quotes.html" title=""> Quotes </a> </li>
+                                </ul>
+                            </li>
+                            <li> <a href="team.html" title=""> Team </a> </li>
+                        	<li> <a href="side-navigation.html" title=""> Side Navigation </a> </li>
+                            <li> <a href="404.html" title=""> 404 </a> </li>
+                        </ul>    
+                    </li>
+                    <li> <a href="portfolio-four-column.html" title=""> Portfolio </a> <span> </span> 
+                    	<ul>
+                        	<li> <a href="portfolio-four-column.html" title=""> Four Column </a>                             
+                            	<ul>
+                                	<li> <a href="portfolio-four-column.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="portfolio-four-column-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="portfolio-four-column-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="portfolio-three-column.html" title=""> Three Column </a>                             
+                            	<ul>
+                                	<li> <a href="portfolio-three-column.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="portfolio-three-column-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="portfolio-three-column-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="portfolio-two-column.html" title=""> Two Column </a>                             
+                            	<ul>
+                                	<li> <a href="portfolio-two-column.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="portfolio-two-column-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="portfolio-two-column-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="portfolio-one-column.html" title=""> One Column </a>                             
+                            	<ul>
+                                	<li> <a href="portfolio-one-column.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="portfolio-one-column-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="portfolio-one-column-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="portfolio-single.html" title=""> Portfolio Single </a>                             
+                            	<ul>
+                                	<li> <a href="portfolio-single.html" title=""> Layout 1 </a> </li>
+                                    <li> <a href="portfolio-single2.html" title=""> Layout 2 </a> </li>
+                                </ul>                            
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="current_page_item"> <a href="blog-three-column.html" title=""> Blog </a> <span> </span>                     
+                    	<ul>
+                        	<li> <a href="blog-three-column.html" title=""> Three Column </a>                             
+                            	<ul>
+                                	<li> <a href="blog-three-column.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="blog-three-column-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="blog-three-column-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="blog-two-column.html" title=""> Two Column </a>                             
+                            	<ul>
+                                	<li> <a href="blog-two-column.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="blog-two-column-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="blog-two-column-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li class="current_page_item"> <a href="blog-fullwidth.html" title=""> Fullwidth image </a>                             
+                            	<ul>
+                                	<li> <a href="blog-fullwidth.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="blog-fullwidth-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li class="current_page_item"> <a href="blog-fullwidth-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="blog-thumb.html" title=""> Thumb image </a>                             
+                            	<ul>
+                                	<li> <a href="blog-thumb.html" title=""> Without Sidebar </a> </li>
+                                    <li> <a href="blog-thumb-with-left-sidebar.html" title=""> With Left Sidebar </a> </li>
+                                    <li> <a href="blog-thumb-with-right-sidebar.html" title=""> With Right Sidebar </a> </li>
+                                </ul>                            
+                            </li>
+                        	<li> <a href="blog-single.html" title=""> Blog Single </a> </li>
+                        </ul>                    
+                    </li>
+                    <li> <a href="products.html" title=""> Shop </a> <span> </span> 
+                    
+                    	<ul>
+                        	<li> <a href="products.html" title=""> Product List </a> </li>
+                        	<li> <a href="products2.html" title=""> Product List type 2 </a> </li>
+                        	<li> <a href="product-detail.html" title=""> Product Detail </a> </li>
+                        </ul>                    
+                    
+                    </li>
+                    <li> <a href="contact.html" title=""> Contact </a> <span> </span> 
+                        <ul>
+                            <li> <a href="contact.html" title=""> Layout 1 </a> </li>
+                            <li> <a href="contact2.html" title=""> Layout 2 </a> </li>
+                        </ul>                            
+                    </li>
+                </ul>
+            </nav><!-- **Navigation - End** -->      
+        </div>
+    	
+    </header><!-- **Header - End** -->
+    
+    <!-- **Main** -->
+    <div id="main">
+    
+    	<!-- **Breadcrumb** -->
+    	<section class="breadcrumb-section">
+        	<div class="container">
+            	<div class="breadcrumb">
+                    <a href="index.html"> Home </a> 
+                    <span class="icon-chevron-right"> </span>
+                    <h1>Resume Help, Career Tips & Job News From Resume Companion</h1>
+                </div>
+            </div>
+        </section><!-- **Breadcrumb** -->
+    
+        <!-- **Container** -->
+        <div class="container">
+        
+            <!-- **Primary Section** -->
+            <section id="primary">     
 
-    <div class="clear-all"></div>
-  </div>
+              <%= yield %>
 
-  <%= render "blog/shared/footer" %>
-  <%= render "blog/shared/google_analytics" if Rails.env.production? %>
+                
+            </section><!-- **Primary Section** -->     
+            
+            <!-- **Secondary Section - End** -->    
+            <section id="secondary">
+            
+                <aside class="widget">
+                    <h3 class="widgettitle"> <a href="" title=""> Recent Posts </a> </h3>
+                    <ul class="recent-posts-widget">
+                        <li> 
+                            <a class="thumb" href="" title=""> <img src="http://placehold.it/100x80.jpg" alt="" title=""> </a>
+                            <h6> <a href="" title=""> Lorem ipsum dolor sit amet </a> </h6>
+                            <p> Lorem ipsum dolor sit amet, cosect etur adipiscing elit etiam  </p>
+                        </li>
+                        <li> 
+                            <a class="thumb" href="" title=""> <img src="http://placehold.it/100x80.jpg" alt="" title=""> </a>
+                            <h6> <a href="" title=""> Lorem ipsum dolor sit amet </a> </h6>
+                            <p> Lorem ipsum dolor sit amet, cosect etur adipiscing elit etiam  </p>
+                        </li>
+                        <li> 
+                            <a class="thumb" href="" title=""> <img src="http://placehold.it/100x80.jpg" alt="" title=""> </a>
+                            <h6> <a href="" title=""> Lorem ipsum dolor sit amet </a> </h6>
+                            <p> Lorem ipsum dolor sit amet, cosect etur adipiscing elit etiam  </p>
+                        </li>
+                    </ul>
+                </aside>   
+            
+                <aside class="widget widget_categories">
+                    <h3 class="widgettitle"> <a href="" title=""> Categories </a> </h3>
+                    <ul>
+                        <li> <a href="" title=""> Business <span> 16 </span> </a> </li>
+                        <li> <a href="" title=""> Typography <span> 5 </span> </a> </li>
+                        <li> <a href="" title=""> Branding <span> 11 </span> </a> </li>
+                        <li> <a href="" title=""> Online Marketing <span> 20 </span> </a> </li>
+                        <li> <a href="" title=""> Woo Commerce <span> 7 </span> </a> </li>        
+                        <li> <a href="" title=""> Wordpress <span> 3 </span> </a> </li>
+                    </ul>
+                </aside>  
+                
+                <aside class="widget">
+                    <h3 class="widgettitle"> <a href="" title=""> Archives </a> </h3>
+                    <ul>
+                        <li> <a href="" title=""> April 2013 </a> </li>
+                        <li> <a href="" title=""> March 2013 </a> </li>
+                        <li> <a href="" title=""> February 2013 </a> </li>
+                        <li> <a href="" title=""> January 2013 </a> </li>
+                    </ul>
+                </aside> 
+                
+                <aside class="widget widget_tag_cloud">
+                    <h3 class="widgettitle"> <a href="" title=""> Tags </a> </h3>
+                    <div class="tagcloud">
+                        <a href="" title=""> webdesign </a>
+                        <a href="" title=""> html </a>
+                        <a href="" title=""> woo commerce </a>
+                        <a href="" title=""> blog </a>
+                        <a href="" title=""> news </a>
+                        <a href="" title=""> photography </a>
+                        <a href="" title=""> tech </a>
+                        <a href="" title=""> creative </a>
+                        <a href="" title=""> photoshop </a>
+                        <a href="" title=""> responsive </a>
+                    </div>
+                </aside> 
+                
+                <aside class="widget">
+                    <h3 class="widgettitle"> <a href="" title=""> Text Widget </a> </h3>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sollicitudin interdum eros at petesque. Onec dictum rhoncus sapien aliquet tempor. Cras cursus nisi sed dui <a href="" title=""> scelerisque posuere.</a> Maecenas tempus tempor leo sed mollis. Praesent blandit odio eget nunc faucibus fringilla.  </p>
+                </aside>  
+                 
+            </section><!-- **Secondary Section -End** -->    
+            
+        </div><!-- **Container - End** -->
+    </div><!-- **Main - End** -->
+    
+    <!-- **Footer** -->
+    <footer id="footer">
+    	<div class="container">
+        
+			<div class="column one-fourth"> 
+                <aside class="widget">
+                    <h3 class="widgettitle"> <a href="" title=""> Information </a> </h3>
+                    <ul>
+                        <li> <a href="" title=""> Lorem ipsum dolor sit amet </a> </li>
+                        <li> <a href="" title=""> Mauris aliquam nisi eget quam mollis </a> </li>
+                        <li> <a href="" title=""> Sed a ante nulla, id pretium </a> </li>
+                        <li> <a href="" title=""> Nunc eleifend purus cursus risus </a> </li>
+                        <li> <a href="" title=""> Vestibulum in eros lectus, at tempus </a> </li>        
+                        <li> <a href="" title=""> Nunc eu tellus vitae lacus viverra </a> </li>
+                    </ul>
+                </aside>   
+			</div>
+            
+            <div class="column one-fourth"> 
+                <aside class="widget">
+                    <h3 class="widgettitle"> <a href="" title=""> Featured Products </a> </h3>
+                    <ul class="product_list_widget">
+                    	<li> 
+                        	<a href="" title=""> 
+                            	<img src="http://placehold.it/70x60.jpg" alt="" title="">                                 
+                            </a>
+                            Integer luctus portto pur nec ornare metus
+                            <span class="amount"> $170,000 </span>
+                        </li>
+                        <li> 
+                        	<a href="" title=""> 
+                            	<img src="http://placehold.it/70x60.jpg" alt="" title="">                                 
+                            </a>
+                            Integer luctus portto pur nec ornare metus
+                            <span class="amount"> $170,000 </span>
+                        </li>
+                        <li> 
+                        	<a href="" title=""> 
+                            	<img src="http://placehold.it/70x60.jpg" alt="" title="">                                 
+                            </a>
+                            Integer luctus portto pur nec ornare metus
+                            <span class="amount"> $170,000 </span>
+                        </li>
+                    </ul>
+                </aside>   
+			</div>
+        
+        
+        	<div class="column one-fourth">
+                <aside class="widget tweetbox"> 
+                    <h3 class="widgettitle"> <a href="" title=""> Twitter Feeds </a> </h3>
+                    <div class="tweets"> </div>
+                </aside>   
+            </div>  
+            
+            <div class="column one-fourth last">
+            	<aside class="widget">
+                    <h3 class="widgettitle"> <a href="" title=""> Contact Info </a> </h3>
+                	<p> 105, B Block,  Wesr Street, London, BCA, United Kingdom </p>
+                    <p> <span class="icon-phone"> </span> Phone : 1800-299-234-22 </p>
+                    <p> <span class="icon-envelope-alt"> </span> Email : <a href="mailto:delicate@someemail.com"> delicate@someemail.com </a> </p>
+                    <p> <span class="icon-globe"> </span> Website : <a href="" title=""> www.yourdomain.com </a> </p> 
+                <ul class="social-icons">
+                    <li>
+                        <a href="" title=""> 
+                          <%= image_tag "blog/theme/sociable/hover/facebook.png" %> 
+                          <%= image_tag "blog/theme/sociable/facebook.png" %> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/google.png" %>
+                            <%= image_tag "blog/theme/sociable/google.png" %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/twitter.png" %>
+                            <%= image_tag "blog/theme/sociable/twitter.png" %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/dribble.png" %>
+                            <%= image_tag "blog/theme/sociable/dribble.png" %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title=""> 
+                            <%= image_tag "blog/theme/sociable/hover/linkedin.png" %>
+                            <%= image_tag "blog/theme/sociable/linkedin.png" %>
+                        </a>
+                    </li>
+                </ul>
+                </aside>	
+            </div>
+            
+        </div>
+        
+        <div class="copyright">        	
+        	<div class="container">
+                <p> Copyright &copy; 2013 Delicate Theme All Rights Reserved. | <a href="" title=""> Design Themes </a> </p>        	
+            </div>
+        </div>
+    </footer><!-- **Footer - End** -->
+	
+</div><!-- **Wrapper - End** -->
+
+
+<!-- **jQuery** -->
+<!-- <script src="js/modernizr-2.6.2.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobilemenu.js"></script>
+
+<script src="js/jquery.viewport.js"></script>
+
+<script src="js/twitter/jquery.tweet.min.js"></script>
+
+<script src="js/custom.js"></script> -->
+
+<%= javascript_include_tag "blog/theme" %>
 
 </body>
 </html>
