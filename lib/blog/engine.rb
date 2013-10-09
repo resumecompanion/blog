@@ -1,3 +1,6 @@
+require 'rack-rewrite'
+require 'thinking_sphinx'
+
 module Blog
   class Engine < ::Rails::Engine
     isolate_namespace Blog
