@@ -42,6 +42,7 @@ module Blog
 
     def render_404
       @title = "Page not found"
+      render status: 404
     end
 
     private
