@@ -26,7 +26,8 @@ module Blog
       @post = Blog::Post.find_by_slug(params[:id])
 
       if @post.blank?
-        redirect_to :action => :render_404
+        @title = "Page not found"
+        render 'render_404', status: 404
         return false
       end
 
