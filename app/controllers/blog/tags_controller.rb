@@ -4,7 +4,8 @@ module Blog
       @tag = Blog::Tag.find_by_slug_and_is_enabled(params[:id], true)
 
       if @tag.blank?
-        redirect_to :controller => :posts, :action => :render_404
+        @title = "Page not found"
+        render 'blog/posts/render_404', status: 404
         return false
       end
 
