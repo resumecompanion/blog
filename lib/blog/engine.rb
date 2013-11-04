@@ -5,6 +5,20 @@ module Blog
   class Engine < ::Rails::Engine
     isolate_namespace Blog
 
+    initializer :monkey_patch_kaminiari do
+      module ::Kaminari
+        module Helpers
+          class Tag
+            puts self
+            alias_method :old_page_url_for, :page_url_for
+            def page_url_for(page)
+              old_page_url_for(page).gsub(/\/$/, '')
+            end
+          end
+        end
+      end
+    end
+
     initializer :append_migrations do |app|
       unless app.root.to_s == root.to_s
         app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded

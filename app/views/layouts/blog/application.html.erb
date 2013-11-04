@@ -40,7 +40,7 @@
   <% end %>
   <div id="header">
     <div class="content">
-      <%= link_to "Logo", blog.root_path, :class => "logo" %>
+      <%= link_to "Logo", Blog::Engine.routes._generate_prefix({}), :class => "logo" %>
       <p id="website-description">
         #1 Resource for Resume Tips<br>
         Resume Examples, Resume Templates and More

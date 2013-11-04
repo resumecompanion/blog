@@ -26,7 +26,8 @@ Blog::Engine.routes.draw do
 
   get '/posts', to: redirect('/blog'), constraints: lambda { |request| request.params[:page].nil? && !request.ssl? && request.format != 'rss' }
   
-  resources :posts, :only => [:index, :show]
+  get '/posts/:id' => redirect {|params, request| Blog::Engine.routes._generate_prefix({}) + "/#{params[:id]}" }
+  resources :posts, :only => [:index, :show], path: ''
   resources :tags, :only => [:show]
 
   match "/404" => "posts#render_404"
