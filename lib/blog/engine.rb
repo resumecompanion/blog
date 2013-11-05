@@ -9,7 +9,6 @@ module Blog
       module ::Kaminari
         module Helpers
           class Tag
-            puts self
             alias_method :old_page_url_for, :page_url_for
             def page_url_for(page)
               old_page_url_for(page).gsub(/\/$/, '')
