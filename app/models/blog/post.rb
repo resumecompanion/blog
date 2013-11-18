@@ -2,7 +2,7 @@ module Blog
   class Post < ActiveRecord::Base
     attr_accessible :author_id, :sidebar_id, :title, :slug, :meta_description,
                     :meta_keywords, :content, :excerpt, :is_published, :published_at,
-                    :old_id, :generate_slug, :post_tags, :meta_title
+                    :old_id, :generate_slug, :post_tags, :meta_title, :no_index
     attr_accessor :generate_slug, :post_tags
 
     paginates_per 10

@@ -6,6 +6,10 @@
   <meta property="og:image" content="<%= @post.first_image_url %>">
   <meta property="og:site_name" content="Resume Companion">
   <meta property="fb:admins" content="100003747837559" />
+
+  <% if @post.no_index %>
+    <meta name="googlebot" content="noindex">
+  <% end %>
 <% end %>
 
 <div id="main">
