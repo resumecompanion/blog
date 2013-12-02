@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require blog/plugin/jquery.easing.1.3
+//= require blog/application/hellobar
 //= require blog/application/open_remote_links_in_new_tab
+
+$(function() {
+  Hellobar.initialize()
+})
