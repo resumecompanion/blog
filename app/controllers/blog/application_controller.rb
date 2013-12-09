@@ -3,6 +3,8 @@ module Blog
 
     before_filter :find_recent_posts
     before_filter :get_ga_account
+    before_filter :prepend_view_path_for_theme
+    helper_method :global_theme
 
     def require_admin
       redirect_to blog.root_path unless blog_user_signed_in? && current_blog_user.is_admin?
@@ -18,6 +20,17 @@ module Blog
 
     def get_ga_account
       @ga_account = get_setting("global:ga_account")
+    end
+
+    def global_theme
+      @theme ||= get_setting("global:theme")
+    end
+
+    protected
+    def prepend_view_path_for_theme
+      puts "GOTHERE"
+      puts global_theme.inspect
+      prepend_view_path "#{Blog::Engine.root}/app/views/#{global_theme}"
     end
   end
 end
