@@ -5,6 +5,7 @@ module Blog
     before_filter :get_ga_account
     before_filter :prepend_view_path_for_theme
     helper_method :global_theme
+    layout :set_layout
 
     def require_admin
       redirect_to blog.root_path unless blog_user_signed_in? && current_blog_user.is_admin?
@@ -31,6 +32,10 @@ module Blog
       puts "GOTHERE"
       puts global_theme.inspect
       prepend_view_path "#{Blog::Engine.root}/app/views/#{global_theme}"
+    end
+
+    def set_layout
+      "blog/#{global_theme}"
     end
   end
 end

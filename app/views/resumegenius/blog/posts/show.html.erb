@@ -1,0 +1,47 @@
+<% content_for :header do %>
+  <meta property="og:title" content="<%= @meta_title || @title %>"> 
+  <meta property="og:description" content="<%= @meta_description %>"> 
+  <meta property="og:type" content="article"> 
+  <meta property="og:url" content="<%= post_url(@post)%>">
+  <meta property="og:image" content="<%= @post.first_image_url %>">
+  <meta property="og:site_name" content="Resume Companion">
+  <meta property="fb:admins" content="100003747837559" />
+
+  <% if @post.no_index %>
+    <meta name="googlebot" content="noindex">
+  <% end %>
+<% end %>
+
+<div id="main">
+  <div id="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 itemprop="name headline"><%= @post.title %></h1>
+    <div class="details">
+      <span class="posted-at">Posted on <span itemprop="datePublished"><%= l(@post.published_at.to_date, :format => :long) %></span></span>
+      <span class="author">By 
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span itemprop="name">
+              <%= link_to @post.author.nickname, @post.author.gplus_url, rel: 'author', itemprop: 'url' %>
+            </span>
+        </span>
+      .</span>
+    <%= render "social_buttons", :post => @post %>
+    </div>
+
+    <div class="content" itemprop="articleBody">
+      <%=raw @post.content %>
+    </div>
+
+    <div class="more-information">
+      <div>Tags: <%=raw @post.tags.map { |tag| link_to tag.name, blog.tag_path(tag) }.join(", ") %></div>
+    </div>
+
+    <%= render "social_buttons", :post => @post %>
+    <%= render "disqus", :disqus_shortname => @disqus_shortname %>
+  </div>
+</div>
+
+<div id="sidebar">
+  <%=raw @post.sidebar.try(:content) %>
+  <%= render "blog/shared/recent_posts" %>
+  <%= render "blog/shared/posts_by_tag" %>
+</div>

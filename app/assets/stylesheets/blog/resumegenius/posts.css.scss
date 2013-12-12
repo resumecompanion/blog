@@ -1,0 +1,166 @@
+h1#index-title {
+  font-size: 32px;
+  width: 500px;
+  padding-bottom: 20px;
+  font-weight: bold
+}
+#post {
+  font-size:12px;
+  line-height:20px;
+  a{
+    color: #7aa127;
+  }
+  h1 {
+    font-family: "Helvertica", Arial, sans-serif;
+    margin-bottom:15px;
+    padding-bottom:5px;
+    font-size:30px;
+    line-height:40px;
+    font-weight:bold;
+    border-bottom:2px solid #f0f5f9;
+  }
+
+  h2 {
+    font-size:14px;
+    font-weight:bold;
+    color:#3791cf;
+  }
+
+  h3 {
+    font-size: 1.17em;
+    font-weight:bold;
+  }
+
+  h4 {
+    font-size: 1em;
+    font-weight:bold;
+  }
+
+  h5 {
+    font-size: 0.83em;
+    font-weight:bold;
+  }
+
+  h6 {
+    font-size: 0.75em;
+    font-weight:bold;
+  }
+
+  blockquote {
+    margin-bottom:20px;
+    padding-left:80px;
+    font-size:17px;
+    line-height:25px;
+    font-style:italic;
+    color:#9c9c9c;
+    background: image-url("blog/resumecompanion/quote.png") 0 0 no-repeat;
+    span {
+      color:#3791cf;
+    }
+  }
+
+  p {
+    margin-bottom:20px;
+  }
+
+  .details {
+    margin-bottom:10px;
+    height:50px;
+    font-size:11px;
+    font-style:italic;
+    color:#999999;
+
+    .posted-at, .author {
+      margin-right:5px;
+    }
+
+    #social-buttons {
+      margin-top:15px;
+      margin-bottom:20px;
+    }
+  }
+
+  .more-information {
+    clear:both;
+    margin-bottom:20px;
+    padding:5px 10px;
+    color:#333;
+    background:#ededed;
+  }
+
+  .social-buttons {
+    margin-bottom:30px;
+    padding-bottom:5px;
+    border-bottom:2px solid #f0f5f9;
+  }
+}
+
+#posts{
+  font-size:12px;
+  line-height:20px;
+  a{
+    color: #7aa127;
+  }
+  h2 {
+    font-family: "Helvertica", Arial, sans-serif;
+    margin-bottom:15px;
+    padding-bottom:5px;
+    font-size:30px;
+    line-height:40px;
+    font-weight:bold;
+
+    a {
+      color:#000000;
+
+      &:hover {
+        text-decoration:none;
+      }
+    }
+  }
+
+  .post {
+    font-family:"Georgia", times, serif;
+    margin-bottom:20px;
+    clear:both;
+  }
+
+  .details {
+    margin-bottom:10px;
+    padding:5px 10px;
+    height:20px;
+    font-size:11px;
+    font-style:italic;
+    color:#333;
+    background:#ededed;
+
+    .posted-at, .author {
+      margin-right:5px;
+
+      a {
+        color:#999999;
+        text-decoration:underline;
+
+        &:hover{
+          color:#2686cc;
+        }
+      }
+    }
+  }
+
+  .read-more {
+    clear:both;
+    margin:30px 0 10px;
+    padding-right:10px;
+    text-align:right;
+    font-size:13px;
+  }
+}
+
+.pagination {
+  margin:30px 0 10px 0;
+  font-size:14px;
+  text-align:right;
+  span {
+    margin-right:5px;
+  }
+}

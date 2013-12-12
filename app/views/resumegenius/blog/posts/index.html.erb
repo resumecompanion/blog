@@ -1,0 +1,41 @@
+<% content_for(:header) do %>
+  <link rel="canonical" href="http://<%= request.host_with_port + Blog::Engine.routes._generate_prefix({}) %>" />
+  <% unless params[:page].blank? %>
+<meta name="robots" content="noindex,follow,noodp,noydir"/>
+  <% end %>
+<% end %>
+<h1 id="index-title">Resume Help, Career Tips & Job News From Resume Companion</h1>
+<div id="main">
+  <div id="posts">
+    <% @posts.each do |post| %>
+    <div class="post">
+      <h2><%= link_to post.title, blog.post_path(post) %></h2>
+
+      <div class='clearfix'>
+        <%=raw post.excerpt %>
+      </div>
+
+      <div class="read-more">
+        <%= link_to("Read More...", blog.post_path(post)) %>
+      </div>
+
+      <div class='details'>
+        <span class='posted-at'>
+          Posted on <%= l(post.published_at.to_date, :format => :short) %>
+        </span>
+
+        <span class='author'>
+          By <%= post.author.nickname if post.author.present? %>.
+        </span>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @posts, :params => { :at => nil } %>
+</div>
+
+<div id="sidebar">
+  <%=raw @sidebar.try(:content) %>
+  <%= render "blog/shared/recent_posts" %>
+  <%= render "blog/shared/posts_by_tag" %>
+</div>
