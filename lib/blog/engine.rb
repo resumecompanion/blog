@@ -29,7 +29,7 @@ module Blog
     end
 
     initializer "cms.precompile_assets" do |app|
-      app.config.assets.precompile += %w( blog/application.js, blog/application.css blog/admin.js blog/admin.css )
+      app.config.assets.precompile += %w( blog/application.js, blog/resumegenius.css blog/resumecompanion.css blog/admin.js blog/admin.css )
       app.config.assets.precompile += %w( blog/plugin/ckeditor/init.js blog/plugin/ckeditor/*)
     end
     
