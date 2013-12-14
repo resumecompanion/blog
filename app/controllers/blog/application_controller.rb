@@ -29,8 +29,6 @@ module Blog
 
     protected
     def prepend_view_path_for_theme
-      puts "GOTHERE"
-      puts global_theme.inspect
       prepend_view_path "#{Blog::Engine.root}/app/views/#{global_theme}"
     end
 
