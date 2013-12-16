@@ -5,43 +5,52 @@ h1#index-title {
   font-weight: bold
 }
 #post {
-  font-size:12px;
-  line-height:20px;
+  font-size:14px;
+  line-height:1.5em;
 
-  h1 {
-    font-family: "Helvertica", Arial, sans-serif;
-    margin-bottom:15px;
-    padding-bottom:5px;
-    font-size:30px;
-    line-height:40px;
-    font-weight:bold;
-    border-bottom:2px solid #f0f5f9;
+  b, strong {
+    font-weight: bold;
   }
 
+  a{
+    color: #7aa127;
+  }
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+  }
+  h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 36px;
+  }
   h2 {
-    font-size:14px;
-    font-weight:bold;
-    color:#3791cf;
+    font-size: 30px;
   }
 
   h3 {
-    font-size: 1.17em;
-    font-weight:bold;
+    font-size: 24px;
   }
 
   h4 {
-    font-size: 1em;
-    font-weight:bold;
+    font-size: 18px;
   }
 
   h5 {
-    font-size: 0.83em;
-    font-weight:bold;
+    font-size: 14px;
   }
 
   h6 {
-    font-size: 0.75em;
-    font-weight:bold;
+    font-size: 12px;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 
   blockquote {
@@ -58,7 +67,10 @@ h1#index-title {
   }
 
   p {
-    margin-bottom:20px;
+    margin: 0 0 10px;
+    span {
+      line-height: 1em;
+    }
   }
 
   .details {
@@ -82,8 +94,8 @@ h1#index-title {
     clear:both;
     margin-bottom:20px;
     padding:5px 10px;
-    color:#999999;
-    background:#f0f5fb;
+    color:#333;
+    background:#ededed;
   }
 
   .social-buttons {
@@ -94,8 +106,8 @@ h1#index-title {
 }
 
 #posts{
-  font-size:12px;
-  line-height:20px;
+  font-size:14px;
+  line-height: 1.5em;
 
   h2 {
     font-family: "Helvertica", Arial, sans-serif;
