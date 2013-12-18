@@ -24,12 +24,12 @@ Blog::Engine.routes.draw do
     match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http')}, constraints: lambda {|request| request.ssl?}
   end
 
-  get '/posts.rss', to: 'posts#index', format: 'rss'
   get '/posts', to: redirect('/blog'), constraints: lambda { |request| request.params[:page].nil? && !request.ssl? && request.format != 'rss' }
-
   get '/posts/:id' => redirect {|params, request| Blog::Engine.routes._generate_prefix({}) + "/#{params[:id]}" }
+  resources :posts, :only => [:index, :show], path: '', constraints: lambda { |request| request.format != 'rss' }
+  get '/posts.rss', to: 'posts#index', constraints: lambda { |request| request.format == 'rss' }
 
-  resources :posts, :only => [:index, :show], path: ''
+
   resources :tags, :only => [:show]
 
   match "/404" => "posts#render_404"
