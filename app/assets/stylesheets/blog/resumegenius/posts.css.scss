@@ -8,6 +8,10 @@ h1#index-title {
   font-size:14px;
   line-height:1.5em;
 
+  em {
+    font-weight: italic;
+  }
+
   b, strong {
     font-weight: bold;
   }
