@@ -10,7 +10,8 @@ $(function(){
       filebrowserBrowseUrl : broswe,
       filebrowserUploadUrl : upload,
       filebrowserWindowWidth : '640',
-      filebrowserWindowHeight : '480'
+      filebrowserWindowHeight : '480',
+      allowedContent: true
     });
   }
 
