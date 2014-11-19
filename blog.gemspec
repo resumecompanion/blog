@@ -25,4 +25,5 @@ Gem::Specification.new do |s|
   s.add_dependency "stringex"
   s.add_dependency "thinking-sphinx", '~> 2.0.13'
   s.add_dependency "rack-rewrite"
+  s.add_dependency "mini_magick"
 end
