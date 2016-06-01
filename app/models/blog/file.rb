@@ -2,7 +2,7 @@ module Blog
   class File < ActiveRecord::Base
     attr_accessible :image, :title, :filename
 
-    mount_uploader :image, Blog::ImageUploader
+    mount_uploader :image, ImageUploader
     paginates_per 48
 
     validates_presence_of :image
