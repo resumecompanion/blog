@@ -10,12 +10,3 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require blog/plugin/jquery.easing.1.3
-//= require blog/application/hellobar
-//= require blog/application/open_remote_links_in_new_tab
-
-$(function() {
-  Hellobar.initialize()
-})
