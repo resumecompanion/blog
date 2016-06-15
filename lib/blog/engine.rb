@@ -22,7 +22,7 @@ module Blog
       unless app.root.to_s == root.to_s
         app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
       end
-    end   
+    end
 
     config.app_middleware.insert_before(Rack::Lock, Rack::Rewrite) do
       r301 %r{^/(.*)/$}, '/$1'
@@ -30,8 +30,7 @@ module Blog
 
     initializer "cms.precompile_assets" do |app|
       app.config.assets.precompile += %w( blog/application.js, blog/resumegenius.css blog/resumecompanion.css blog/admin.js blog/admin.css )
-      app.config.assets.precompile += %w( blog/plugin/ckeditor/init.js blog/plugin/ckeditor/*)
+      # app.config.assets.precompile += %w( blog/plugin/ckeditor/init.js blog/plugin/ckeditor/*)
     end
-    
   end
 end
