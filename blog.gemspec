@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.name        = "blog"
   s.version     = Blog::VERSION
   s.authors     = ["Josh"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Blog."
-  s.description = "TODO: Description of Blog."
+  s.email       = ["josh@resumecompanion.com"]
+  s.homepage    = "www.google.com"
+  s.summary     = "Blog"
+  s.description = "blog"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
