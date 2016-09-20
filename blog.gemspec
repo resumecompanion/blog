@@ -7,7 +7,7 @@ require "blog/version"
 Gem::Specification.new do |s|
   s.name        = "blog"
   s.version     = Blog::VERSION
-  s.authors     = ["TODO: Your name"]
+  s.authors     = ["Josh"]
   s.email       = ["TODO: Your email"]
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of Blog."
