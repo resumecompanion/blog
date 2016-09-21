@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Blog::VERSION
   s.authors     = ["Josh"]
   s.email       = ["josh@resumecompanion.com"]
-  s.homepage    = "www.google.com"
+  s.homepage    = "https://resumegenius.com/"
   s.summary     = "Blog"
   s.description = "blog"
 
