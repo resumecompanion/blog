@@ -24,7 +24,7 @@ module Blog
       end
     end
 
-    config.app_middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    config.app_middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
       r301 %r{^/(.*)/$}, '/$1'
     end
 
