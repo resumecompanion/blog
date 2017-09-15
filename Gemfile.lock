@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blog (0.2.0)
+    blog (0.3.0)
       carrierwave
       compass-rails
       devise
