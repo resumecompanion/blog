@@ -13,12 +13,9 @@ gem "carrierwave"
 gem "kaminari"
 gem "stringex"
 gem 'mysql2'
-gem 'thinking-sphinx', '~> 2.0',  :require => "thinking_sphinx"
+gem 'thinking-sphinx', '~> 3.0',  :require => "thinking_sphinx"
 gem "rack-rewrite"
-
-
 gem 'sass-rails',   '~> 3.2.3'
-gem 'compass-rails'
 
 gemspec
 
